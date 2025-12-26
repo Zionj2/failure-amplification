@@ -412,3 +412,29 @@ a:hover {
   width: 18px;
   height: 18px;
 }
+
+
+.search-input {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(233, 238, 245, 0.18);
+  background: rgba(233, 238, 245, 0.06);
+  color: rgba(233, 238, 245, 0.92);
+  font-size: 16px;
+  outline: none;
+}
+.search-results a {
+  text-decoration: none;
+}
+.search-results a:hover {
+  text-decoration: underline;
+}
+
+
+@media print {
+  .site-header, .site-footer, .nav, .cta-row { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  a { color: #000 !important; text-decoration: underline; }
+  .card, .callout, .principle { border: 1px solid #ccc !important; background: #fff !important; }
+}

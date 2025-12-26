@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search — Failure Amplification</title>
+    <meta name="description" content="Search across patterns, scenarios, and checklists." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">Δ</div>
+          <div>
+            <h1 class="brand-title">Failure Amplification</h1>
+            <p class="brand-subtitle">Search across the guide.</p>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="index.html">Concept</a>
+          <a class="nav-link" href="patterns.html">Patterns</a>
+          <a class="nav-link" href="scenarios/index.html">Scenarios</a>
+          <a class="nav-link" href="checklist.html">Checklist</a>
+          <a class="nav-link" href="for-teams.html">For Teams</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link is-active" href="search.html">Search</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="container">
+      <section class="hero">
+        <p class="kicker">Search</p>
+        <h2 class="hero-title">Find patterns, scenarios, and concepts</h2>
+        <p class="hero-lede">Type a keyword like “retry”, “coupling”, or “slack”.</p>
+
+        <div class="callout">
+          <label class="muted" for="q">Query</label>
+          <input id="q" class="search-input" type="search" placeholder="Search…" autocomplete="off" />
+          <p class="muted" style="margin-top: 10px">Results:</p>
+          <div id="results" class="search-results"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="search.js"></script>
+  </body>
+</html>

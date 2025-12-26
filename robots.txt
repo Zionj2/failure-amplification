@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zionj2.github.io/failure-amplification/sitemap.xml
