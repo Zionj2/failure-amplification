@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scenarios — Failure Amplification</title>
+    <meta name="description" content="Concrete cascades mapped to failure amplification patterns." />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">Δ</div>
+          <div>
+            <h1 class="brand-title">Failure Amplification</h1>
+            <p class="brand-subtitle">Scenarios: concrete chains of cause → effect → amplification.</p>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="../index.html">Concept</a>
+          <a class="nav-link" href="../patterns.html">Patterns</a>
+          <a class="nav-link is-active" href="index.html">Scenarios</a>
+          <a class="nav-link" href="../checklist.html">Checklist</a>
+          <a class="nav-link" href="../for-teams.html">For Teams</a>
+          <a class="nav-link" href="../about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="container">
+      <section class="hero">
+        <p class="kicker">Scenarios</p>
+        <h2 class="hero-title">Stories that make the patterns visible</h2>
+        <p class="hero-lede">
+          Each scenario is short, concrete, and mapped to patterns. The goal is recognition: once you’ve seen the
+          shape, you spot it early.
+        </p>
+
+        <div class="callout">
+          <h3>Featured</h3>
+          <p>
+            The featured scenario lives at <a href="../scenario.html">Featured Scenario</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="stack">
+        <h2>Scenario library</h2>
+
+        <div class="grid">
+          <article class="card">
+            <h3><a href="retry-storm.html">Retry Storm → Outage</a></h3>
+            <p class="muted">
+              A minor slowdown triggers retries, retries add load, load increases slowdown, and the loop runs away.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Retry Storm</span>
+              <span class="tag">No Slack</span>
+              <span class="tag">Queue Collapse</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3><a href="alert-fatigue.html">“It’s probably fine” → Too late</a></h3>
+            <p class="muted">
+              Noisy alerts train people to ignore signals. Response delay becomes the amplifier.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Alert Fatigue</span>
+              <span class="tag">Delay</span>
+              <span class="tag">Workaround Debt</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3><a href="coupling-cascade.html">Coupling Cascade</a></h3>
+            <p class="muted">
+              A dependency hiccup spreads across boundaries because the system is more connected than anyone realized.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Hidden Coupling</span>
+              <span class="tag">Queue Collapse</span>
+              <span class="tag">No Slack</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">Scenarios · mapped to patterns</p>
+        <p class="muted"><a href="../patterns.html">Patterns</a> · <a href="../checklist.html">Checklist</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
