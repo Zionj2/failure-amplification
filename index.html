@@ -1,41 +1,155 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Failure Amplification Modeling</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <div class="brand">
-        <div class="kicker"><span class="dot"></span> Modeling artifact</div>
-        <h1>Failure Amplification Modeling</h1>
-        <p class="lede">
-          At global scale, rare edge case failures do not stay rare. This project models how low probability
-          events propagate across users, media, and response systems to produce disproportionate impact.
-        </p>
-      </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Failure Amplification</title>
+    <meta
+      name="description"
+      content="A concise explanation of how small failures cascade into large outcomes, demonstrated through one concrete scenario."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-      <div class="actions">
-        <a class="button" href="scenario.html">View Scenario Analysis</a>
-        <span class="badge">Clarity, not prediction</span>
-      </div>
-    </div>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
 
-    <div class="panel">
-      <div class="panel-inner">
-        <p class="section-title">What you’re looking at</p>
-        <p style="margin:0;color:var(--muted);max-width:70ch;">
-          A structured walkthrough that makes assumptions explicit and traces how “acceptable” error rates can
-          become systemic risk under scale induced amplification.
-        </p>
-        <div class="footer">
-          Early stage modeling environment. Assumptions are conservative and adjustable.
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">Δ</div>
+          <div>
+            <h1 class="brand-title">Failure Amplification</h1>
+            <p class="brand-subtitle">
+              How small problems become big outcomes — by compounding, coupling,
+              and delay.
+            </p>
+          </div>
         </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link is-active" href="index.html">Concept</a>
+          <a class="nav-link" href="scenario.html">Scenario</a>
+          <a class="nav-link" href="#principles">Principles</a>
+        </nav>
       </div>
-    </div>
-  </div>
-</body>
+    </header>
+
+    <main id="content" class="container">
+      <section class="hero">
+        <p class="kicker">A short, self-contained explanation</p>
+        <h2 class="hero-title">
+          Failure amplification is when a small failure doesn’t stay small.
+        </h2>
+        <p class="hero-lede">
+          In many systems, the disaster isn’t a single catastrophic event. It’s a
+          chain reaction: minor issues interact, spread, and compound until the
+          system can’t recover in time.
+        </p>
+
+        <div class="callout">
+          <h3>Working definition</h3>
+          <p>
+            <strong>Failure amplification</strong> is the process where
+            <em>initially manageable</em> problems grow in impact because of
+            <strong>feedback loops</strong>, <strong>hidden coupling</strong>,
+            and <strong>delayed detection</strong>.
+          </p>
+        </div>
+
+        <div class="cta-row">
+          <a class="button" href="scenario.html">Read the scenario</a>
+          <a class="button ghost" href="#principles">See the principles</a>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h3>Why it’s easy to miss</h3>
+          <p>
+            Small failures often look harmless in isolation. The risk lives in
+            the <em>interaction</em> between failures: one workaround creates
+            pressure elsewhere, which creates another workaround, and so on.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>What this project does</h3>
+          <p>
+            It keeps scope narrow: one core idea, one concrete example, and a
+            readable format. The aim is to make the pattern visible, not to
+            overwhelm you with theory.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>What you should gain</h3>
+          <p>
+            A better instinct for when “minor” issues are actually early signals
+            of cascading failure — and what conditions make cascades more likely.
+          </p>
+        </article>
+      </section>
+
+      <section id="principles" class="stack">
+        <h2>Principles that drive amplification</h2>
+
+        <div class="principles">
+          <div class="principle">
+            <h3>1) Delay hides damage</h3>
+            <p>
+              If consequences arrive late, you keep doing the thing that caused
+              them. By the time the signal appears, the system has already
+              accumulated debt.
+            </p>
+          </div>
+
+          <div class="principle">
+            <h3>2) Coupling spreads impact</h3>
+            <p>
+              Tightly connected parts share failure. One component running “a
+              little hot” becomes everyone’s problem when there’s no slack.
+            </p>
+          </div>
+
+          <div class="principle">
+            <h3>3) Workarounds create new risk</h3>
+            <p>
+              A workaround can be rational in the moment — but it often moves
+              risk to a place you’re not watching, and makes the next failure
+              more likely.
+            </p>
+          </div>
+
+          <div class="principle">
+            <h3>4) Feedback loops accelerate</h3>
+            <p>
+              Once pressure creates behaviors that increase pressure, the system
+              enters a loop. Loops are where “small” becomes “unstoppable.”
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-cta">
+          <p class="muted">
+            Next: a concrete walkthrough where each step makes the next step
+            easier to trigger.
+          </p>
+          <a class="button" href="scenario.html">Go to the scenario</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">
+          Built as a static site for clarity: HTML + CSS, deployed on GitHub
+          Pages.
+        </p>
+        <p class="muted">
+          <a href="scenario.html">Scenario</a> · <a href="index.html">Concept</a>
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
