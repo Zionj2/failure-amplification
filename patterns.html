@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patterns — Failure Amplification</title>
+    <meta
+      name="description"
+      content="An atlas of common patterns that make small failures cascade into large outcomes."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">Δ</div>
+          <div>
+            <h1 class="brand-title">Failure Amplification</h1>
+            <p class="brand-subtitle">
+              Patterns are repeatable shapes of failure: different systems, same dynamics.
+            </p>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="index.html">Concept</a>
+          <a class="nav-link is-active" href="patterns.html">Patterns</a>
+          <a class="nav-link" href="scenarios/index.html">Scenarios</a>
+          <a class="nav-link" href="checklist.html">Checklist</a>
+          <a class="nav-link" href="about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="container">
+      <section class="hero">
+        <p class="kicker">Patterns</p>
+        <h2 class="hero-title">Common ways cascades accelerate</h2>
+        <p class="hero-lede">
+          Patterns let you recognize a cascade early. If you can name the shape, you can intervene
+          before it becomes a rescue mission.
+        </p>
+
+        <div class="callout">
+          <h3>How to read this</h3>
+          <p>
+            Each pattern includes: what it is, why it amplifies failure, and a practical way to interrupt it.
+            Scenarios below show the patterns in motion.
+          </p>
+        </div>
+      </section>
+
+      <section class="stack">
+        <h2>The atlas</h2>
+
+        <div class="principles">
+          <div class="principle" id="retry-storm">
+            <h3>Retry Storm</h3>
+            <p>
+              <strong>What:</strong> Clients retry when things slow down.
+              <strong>Amplifier:</strong> retries add load, increasing latency, triggering more retries.
+            </p>
+            <p class="muted">
+              Interrupt: cap retries, use exponential backoff + jitter, and track retry rate separately.
+            </p>
+            <p>
+              <a href="scenarios/retry-storm.html">Scenario: Retry Storm → Outage</a>
+            </p>
+          </div>
+
+          <div class="principle" id="alert-fatigue">
+            <h3>Alert Fatigue</h3>
+            <p>
+              <strong>What:</strong> Alerts fire too often or too noisily.
+              <strong>Amplifier:</strong> response slows because the signal isn’t trusted.
+            </p>
+            <p class="muted">
+              Interrupt: reduce noisy alerts, define severity, and practice response drills.
+            </p>
+            <p>
+              <a href="scenarios/alert-fatigue.html">Scenario: “It’s probably fine” → Too late</a>
+            </p>
+          </div>
+
+          <div class="principle" id="hidden-coupling">
+            <h3>Hidden Coupling</h3>
+            <p>
+              <strong>What:</strong> Parts depend on each other more than people realize.
+              <strong>Amplifier:</strong> one failure spreads impact across boundaries.
+            </p>
+            <p class="muted">
+              Interrupt: isolation, graceful degradation, and clear boundaries with fallback behavior.
+            </p>
+            <p>
+              <a href="scenarios/coupling-cascade.html">Scenario: Coupling Cascade</a>
+            </p>
+          </div>
+
+          <div class="principle" id="queue-collapse">
+            <h3>Queue Collapse</h3>
+            <p>
+              <strong>What:</strong> Work queues build up under load.
+              <strong>Amplifier:</strong> backlog increases latency/resources, causing timeouts and failures.
+            </p>
+            <p class="muted">
+              Interrupt: backpressure, drop/limit work early, keep queues bounded.
+            </p>
+          </div>
+
+          <div class="principle" id="workaround-debt">
+            <h3>Workaround Debt</h3>
+            <p>
+              <strong>What:</strong> Quick fixes accumulate.
+              <strong>Amplifier:</strong> each workaround changes system behavior and hides underlying fragility.
+            </p>
+            <p class="muted">
+              Interrupt: track workarounds, set expiry dates, fix root causes intentionally.
+            </p>
+          </div>
+
+          <div class="principle" id="no-slack">
+            <h3>No Slack</h3>
+            <p>
+              <strong>What:</strong> The system runs near capacity.
+              <strong>Amplifier:</strong> small spikes become catastrophic because there’s no margin to absorb variation.
+            </p>
+            <p class="muted">
+              Interrupt: add margin, simplify hot paths, reduce load, or redesign for elasticity.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">Patterns atlas · cross-linked to scenarios</p>
+        <p class="muted">
+          <a href="scenarios/index.html">Scenarios</a> · <a href="checklist.html">Checklist</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

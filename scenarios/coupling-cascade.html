@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coupling Cascade — Scenario</title>
+    <meta name="description" content="A cascade driven by hidden coupling and shared dependencies." />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">Δ</div>
+          <div>
+            <h1 class="brand-title">Failure Amplification</h1>
+            <p class="brand-subtitle">Scenario: Coupling Cascade</p>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="../index.html">Concept</a>
+          <a class="nav-link" href="../patterns.html">Patterns</a>
+          <a class="nav-link is-active" href="index.html">Scenarios</a>
+          <a class="nav-link" href="../checklist.html">Checklist</a>
+          <a class="nav-link" href="../about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="container">
+      <section class="hero">
+        <p class="kicker">Scenario</p>
+        <h2 class="hero-title">Coupling Cascade</h2>
+        <p class="hero-lede">
+          One dependency hiccup becomes everybody’s problem because boundaries aren’t real boundaries.
+        </p>
+
+        <div class="callout">
+          <h3>Patterns involved</h3>
+          <div class="tag-row">
+            <span class="tag">Hidden Coupling</span>
+            <span class="tag">Queue Collapse</span>
+            <span class="tag">No Slack</span>
+          </div>
+          <p class="muted" style="margin-top: 10px">
+            Reference: <a href="../patterns.html#hidden-coupling">Hidden Coupling</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="stack">
+        <h2>The cascade</h2>
+        <ol class="timeline">
+          <li class="step">
+            <div class="step-head"><span class="step-num">1</span><h3>A shared dependency slows</h3></div>
+            <p>A service (auth, DB, cache) slows slightly. Nothing fails outright yet.</p>
+            <p class="note">Amplifier seed: <strong>shared dependency</strong>.</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">2</span><h3>Multiple components pile onto the same choke point</h3></div>
+            <p>Several parts of the system all depend on that service. Requests start stacking up everywhere.</p>
+            <p class="note">Amplifier: <strong>coupling</strong> (impact spreads).</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">3</span><h3>Queues grow across boundaries</h3></div>
+            <p>Each component queues work while waiting. Queue depth increases, and timeouts start appearing.</p>
+            <p class="note">Amplifier: <strong>queue collapse</strong>.</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">4</span><h3>No slack means everything tips together</h3></div>
+            <p>With little margin, the system can’t isolate the blast radius. Several services degrade at once.</p>
+            <p class="note">Amplifier: <strong>no slack</strong>.</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">5</span><h3>Recovery becomes coordination-heavy</h3></div>
+            <p>Fixing the dependency is necessary but not sufficient. You must drain backlogs and stabilize multiple services.</p>
+            <p class="note">Key idea: coupling increases both failure spread and recovery complexity.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="stack">
+        <h2>How to interrupt this cascade</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Isolation & fallbacks</h3>
+            <p class="muted">Make components fail independently. Build graceful degradation paths.</p>
+          </article>
+          <article class="card">
+            <h3>Backpressure</h3>
+            <p class="muted">Bound queues and reject work early so waiting doesn’t metastasize across services.</p>
+          </article>
+          <article class="card">
+            <h3>Margin</h3>
+            <p class="muted">Slack buys time and prevents “everything fails at once.”</p>
+          </article>
+        </div>
+
+        <div class="footer-cta">
+          <a class="button" href="../checklist.html">Checklist</a>
+          <a class="button ghost" href="index.html">All scenarios</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">Scenario · Coupling Cascade</p>
+        <p class="muted"><a href="../patterns.html">Patterns</a> · <a href="index.html">Scenarios</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

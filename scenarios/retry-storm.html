@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retry Storm — Scenario</title>
+    <meta name="description" content="A concrete failure cascade driven by retries and feedback loops." />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">Δ</div>
+          <div>
+            <h1 class="brand-title">Failure Amplification</h1>
+            <p class="brand-subtitle">Scenario: Retry Storm</p>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="../index.html">Concept</a>
+          <a class="nav-link" href="../patterns.html">Patterns</a>
+          <a class="nav-link is-active" href="index.html">Scenarios</a>
+          <a class="nav-link" href="../checklist.html">Checklist</a>
+          <a class="nav-link" href="../about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="container">
+      <section class="hero">
+        <p class="kicker">Scenario</p>
+        <h2 class="hero-title">Retry Storm → Outage</h2>
+        <p class="hero-lede">
+          The “fix” (retrying) becomes the failure amplifier.
+        </p>
+
+        <div class="callout">
+          <h3>Patterns involved</h3>
+          <div class="tag-row">
+            <span class="tag">Retry Storm</span>
+            <span class="tag">No Slack</span>
+            <span class="tag">Queue Collapse</span>
+          </div>
+          <p class="muted" style="margin-top: 10px">
+            Reference: <a href="../patterns.html#retry-storm">Retry Storm</a> · <a href="../patterns.html#no-slack">No Slack</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="stack">
+        <h2>The cascade</h2>
+        <ol class="timeline">
+          <li class="step">
+            <div class="step-head"><span class="step-num">1</span><h3>Latency rises slightly</h3></div>
+            <p>A dependency slows (DB, API, or third-party). Requests mostly succeed, just slower.</p>
+            <p class="note">Amplifier seed: <strong>delay</strong>.</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">2</span><h3>Retries trigger under slow responses</h3></div>
+            <p>Clients retry after timeouts. Each “user action” becomes multiple requests.</p>
+            <p class="note">Amplifier: <strong>feedback loop</strong> (retries create load).</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">3</span><h3>Queues form</h3></div>
+            <p>Work piles up. Queues deepen, latency rises further, and timeouts become more frequent.</p>
+            <p class="note">Amplifier: <strong>queue collapse</strong> (backlog increases cost).</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">4</span><h3>No slack means no recovery room</h3></div>
+            <p>With little capacity margin, the system can’t absorb the extra load. It tips into runaway behavior.</p>
+            <p class="note">Amplifier: <strong>no slack</strong> (small spike becomes catastrophe).</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">5</span><h3>The loop runs away</h3></div>
+            <p>Latency → retries → load → latency. Eventually timeouts surge, connections fail, and it looks “down.”</p>
+            <p class="note">Key idea: the system is attacked by its own coping mechanism.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="stack">
+        <h2>How to interrupt this cascade</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Bound retries</h3>
+            <p class="muted">Cap retry count, add exponential backoff + jitter, and stop retrying on certain errors.</p>
+          </article>
+          <article class="card">
+            <h3>Make retries visible</h3>
+            <p class="muted">Track retry rate as a first-class metric. “Success rate” alone can lie.</p>
+          </article>
+          <article class="card">
+            <h3>Restore slack</h3>
+            <p class="muted">Reduce load, add capacity, or shed noncritical work so the system can drain backlogs.</p>
+          </article>
+        </div>
+
+        <div class="footer-cta">
+          <a class="button" href="../checklist.html">Checklist</a>
+          <a class="button ghost" href="index.html">All scenarios</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">Scenario · Retry Storm</p>
+        <p class="muted"><a href="../patterns.html">Patterns</a> · <a href="index.html">Scenarios</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

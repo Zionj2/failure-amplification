@@ -6,7 +6,7 @@
     <title>Failure Amplification</title>
     <meta
       name="description"
-      content="A concise explanation of how small failures cascade into large outcomes, demonstrated through one concrete scenario."
+      content="A concise explanation of how small failures cascade into large outcomes, demonstrated through scenarios and patterns."
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -21,133 +21,129 @@
           <div>
             <h1 class="brand-title">Failure Amplification</h1>
             <p class="brand-subtitle">
-              How small problems become big outcomes — by compounding, coupling,
-              and delay.
+              How small problems become big outcomes — compounding, coupling, delay.
             </p>
           </div>
         </div>
 
         <nav class="nav" aria-label="Primary">
           <a class="nav-link is-active" href="index.html">Concept</a>
-          <a class="nav-link" href="scenario.html">Scenario</a>
-          <a class="nav-link" href="#principles">Principles</a>
+          <a class="nav-link" href="patterns.html">Patterns</a>
+          <a class="nav-link" href="scenarios/index.html">Scenarios</a>
+          <a class="nav-link" href="checklist.html">Checklist</a>
+          <a class="nav-link" href="about.html">About</a>
         </nav>
       </div>
     </header>
 
     <main id="content" class="container">
       <section class="hero">
-        <p class="kicker">A short, self-contained explanation</p>
+        <p class="kicker">A short, structured guide</p>
         <h2 class="hero-title">
           Failure amplification is when a small failure doesn’t stay small.
         </h2>
         <p class="hero-lede">
-          In many systems, the disaster isn’t a single catastrophic event. It’s a
-          chain reaction: minor issues interact, spread, and compound until the
-          system can’t recover in time.
+          Many systems don’t collapse because of one dramatic mistake. They collapse because
+          small, manageable issues interact, spread, and compound—until recovery becomes harder
+          than the original fix.
         </p>
 
         <div class="callout">
           <h3>Working definition</h3>
           <p>
-            <strong>Failure amplification</strong> is the process where
-            <em>initially manageable</em> problems grow in impact because of
-            <strong>feedback loops</strong>, <strong>hidden coupling</strong>,
+            <strong>Failure amplification</strong> is the process where initially manageable problems
+            grow in impact because of <strong>feedback loops</strong>, <strong>hidden coupling</strong>,
             and <strong>delayed detection</strong>.
           </p>
         </div>
 
         <div class="cta-row">
-          <a class="button" href="scenario.html">Read the scenario</a>
-          <a class="button ghost" href="#principles">See the principles</a>
+          <a class="button" href="patterns.html">Explore patterns</a>
+          <a class="button ghost" href="scenarios/index.html">Read scenarios</a>
+          <a class="button ghost" href="checklist.html">Use the checklist</a>
         </div>
       </section>
 
       <section class="grid">
         <article class="card">
-          <h3>Why it’s easy to miss</h3>
+          <h3>What this site is</h3>
           <p>
-            Small failures often look harmless in isolation. The risk lives in
-            the <em>interaction</em> between failures: one workaround creates
-            pressure elsewhere, which creates another workaround, and so on.
+            A compact atlas: patterns (repeatable dynamics), scenarios (concrete cascades),
+            and a checklist (how to catch cascades early).
           </p>
         </article>
 
         <article class="card">
-          <h3>What this project does</h3>
+          <h3>What it avoids</h3>
           <p>
-            It keeps scope narrow: one core idea, one concrete example, and a
-            readable format. The aim is to make the pattern visible, not to
-            overwhelm you with theory.
+            Buzzwords and vague “systems talk.” Every concept is tied to a concrete chain of
+            cause → effect → amplification.
           </p>
         </article>
 
         <article class="card">
-          <h3>What you should gain</h3>
+          <h3>What you gain</h3>
           <p>
-            A better instinct for when “minor” issues are actually early signals
-            of cascading failure — and what conditions make cascades more likely.
+            A sharper instinct for when “minor” issues are actually early signals of cascading
+            failure—and what conditions make cascades likely.
           </p>
         </article>
       </section>
 
-      <section id="principles" class="stack">
-        <h2>Principles that drive amplification</h2>
+      <section class="stack" id="principles">
+        <h2>Core amplification drivers</h2>
 
         <div class="principles">
           <div class="principle">
-            <h3>1) Delay hides damage</h3>
+            <h3>Delay hides damage</h3>
             <p>
-              If consequences arrive late, you keep doing the thing that caused
-              them. By the time the signal appears, the system has already
-              accumulated debt.
+              If consequences arrive late, you keep doing the thing that caused them.
+              By the time the signal appears, the system has already accumulated debt.
             </p>
           </div>
 
           <div class="principle">
-            <h3>2) Coupling spreads impact</h3>
+            <h3>Coupling spreads impact</h3>
             <p>
-              Tightly connected parts share failure. One component running “a
-              little hot” becomes everyone’s problem when there’s no slack.
+              Tightly connected parts share failure. One component running “a little hot”
+              becomes everyone’s problem when there’s no slack.
             </p>
           </div>
 
           <div class="principle">
-            <h3>3) Workarounds create new risk</h3>
+            <h3>Workarounds create new risk</h3>
             <p>
-              A workaround can be rational in the moment — but it often moves
-              risk to a place you’re not watching, and makes the next failure
-              more likely.
+              Workarounds can be rational in the moment—but they often move risk to places
+              you aren’t watching, and make the next failure more likely.
             </p>
           </div>
 
           <div class="principle">
-            <h3>4) Feedback loops accelerate</h3>
+            <h3>Feedback loops accelerate</h3>
             <p>
-              Once pressure creates behaviors that increase pressure, the system
-              enters a loop. Loops are where “small” becomes “unstoppable.”
+              Once pressure creates behaviors that increase pressure, the system enters a loop.
+              Loops are where “small” becomes “runaway.”
             </p>
           </div>
         </div>
 
         <div class="footer-cta">
           <p class="muted">
-            Next: a concrete walkthrough where each step makes the next step
-            easier to trigger.
+            Start with patterns to learn the shapes, then scenarios to see them in motion.
           </p>
-          <a class="button" href="scenario.html">Go to the scenario</a>
+          <a class="button" href="patterns.html">Patterns</a>
+          <a class="button ghost" href="scenarios/index.html">Scenarios</a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
+        <p class="muted">Static site · HTML/CSS · GitHub Pages</p>
         <p class="muted">
-          Built as a static site for clarity: HTML + CSS, deployed on GitHub
-          Pages.
-        </p>
-        <p class="muted">
-          <a href="scenario.html">Scenario</a> · <a href="index.html">Concept</a>
+          <a href="patterns.html">Patterns</a> ·
+          <a href="scenarios/index.html">Scenarios</a> ·
+          <a href="checklist.html">Checklist</a>
         </p>
       </div>
     </footer>

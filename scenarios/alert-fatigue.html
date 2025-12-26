@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alert Fatigue — Scenario</title>
+    <meta name="description" content="A cascade where human delay becomes the amplifier." />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">Δ</div>
+          <div>
+            <h1 class="brand-title">Failure Amplification</h1>
+            <p class="brand-subtitle">Scenario: Alert Fatigue</p>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="../index.html">Concept</a>
+          <a class="nav-link" href="../patterns.html">Patterns</a>
+          <a class="nav-link is-active" href="index.html">Scenarios</a>
+          <a class="nav-link" href="../checklist.html">Checklist</a>
+          <a class="nav-link" href="../about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="container">
+      <section class="hero">
+        <p class="kicker">Scenario</p>
+        <h2 class="hero-title">“It’s probably fine” → Too late</h2>
+        <p class="hero-lede">
+          When alerts are noisy, response delay becomes the amplifier.
+        </p>
+
+        <div class="callout">
+          <h3>Patterns involved</h3>
+          <div class="tag-row">
+            <span class="tag">Alert Fatigue</span>
+            <span class="tag">Delay</span>
+            <span class="tag">Workaround Debt</span>
+          </div>
+          <p class="muted" style="margin-top: 10px">
+            Reference: <a href="../patterns.html#alert-fatigue">Alert Fatigue</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="stack">
+        <h2>The cascade</h2>
+        <ol class="timeline">
+          <li class="step">
+            <div class="step-head"><span class="step-num">1</span><h3>Alerts fire often</h3></div>
+            <p>The system is noisy: lots of warnings, many false alarms, unclear severity.</p>
+            <p class="note">Amplifier seed: <strong>signal distrust</strong>.</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">2</span><h3>People learn to ignore the signal</h3></div>
+            <p>On-call has been burned by noise. The default response becomes “wait and see.”</p>
+            <p class="note">Amplifier: <strong>human delay</strong>.</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">3</span><h3>Workarounds accumulate</h3></div>
+            <p>Instead of fixing root causes, small mitigations pile up: thresholds bumped, timeouts increased.</p>
+            <p class="note">Amplifier: <strong>workaround debt</strong> (fragility grows quietly).</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">4</span><h3>A real incident looks “normal” at first</h3></div>
+            <p>The early warning signs blend into background noise. Response is late and less effective.</p>
+            <p class="note">Amplifier: <strong>late intervention</strong> (less leverage).</p>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="step-num">5</span><h3>Recovery cost spikes</h3></div>
+            <p>By the time action happens, queues/backlogs have formed and collateral damage spreads.</p>
+            <p class="note">Key idea: early action is cheap; late action is expensive.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="stack">
+        <h2>How to interrupt this cascade</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Reduce noise</h3>
+            <p class="muted">Delete or downgrade low-signal alerts. Make severity unambiguous.</p>
+          </article>
+          <article class="card">
+            <h3>Practice response</h3>
+            <p class="muted">Run drills so real signals trigger confident action, not hesitation.</p>
+          </article>
+          <article class="card">
+            <h3>Track workaround debt</h3>
+            <p class="muted">Give workarounds expiry dates and owners so temporary fixes don’t become permanent fragility.</p>
+          </article>
+        </div>
+
+        <div class="footer-cta">
+          <a class="button" href="../checklist.html">Checklist</a>
+          <a class="button ghost" href="index.html">All scenarios</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">Scenario · Alert Fatigue</p>
+        <p class="muted"><a href="../patterns.html">Patterns</a> · <a href="index.html">Scenarios</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

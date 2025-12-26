@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checklist — Failure Amplification</title>
+    <meta
+      name="description"
+      content="A practical checklist for detecting and interrupting failure amplification."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">Δ</div>
+          <div>
+            <h1 class="brand-title">Failure Amplification</h1>
+            <p class="brand-subtitle">A practical checklist: detect early, interrupt loops, restore slack.</p>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="index.html">Concept</a>
+          <a class="nav-link" href="patterns.html">Patterns</a>
+          <a class="nav-link" href="scenarios/index.html">Scenarios</a>
+          <a class="nav-link is-active" href="checklist.html">Checklist</a>
+          <a class="nav-link" href="about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="container">
+      <section class="hero">
+        <p class="kicker">Checklist</p>
+        <h2 class="hero-title">How to spot a cascade before it becomes an outage</h2>
+        <p class="hero-lede">
+          This is a field checklist: questions that reveal hidden loops, masking behavior, and capacity collapse.
+          Use it during incidents, reviews, or when something “feels weird.”
+        </p>
+
+        <div class="callout">
+          <h3>Rule of thumb</h3>
+          <p>
+            If your system is “working” but getting <strong>more expensive per result</strong>
+            (higher latency, higher CPU, bigger queues, more retries), you may be watching amplification in progress.
+          </p>
+        </div>
+      </section>
+
+      <section class="stack">
+        <h2>Detection</h2>
+        <ul class="checklist">
+          <li><label><input type="checkbox" /> Are retries increasing (client or server)?</label></li>
+          <li><label><input type="checkbox" /> Is latency rising even when traffic is “normal”?</label></li>
+          <li><label><input type="checkbox" /> Is queue depth growing or draining slower than usual?</label></li>
+          <li><label><input type="checkbox" /> Are timeouts increasing (even if success rate looks okay)?</label></li>
+          <li><label><input type="checkbox" /> Is the system doing more work per request (CPU, DB connections, memory)?</label></li>
+          <li><label><input type="checkbox" /> Are alerts noisy or being ignored because “it’s always like that”?</label></li>
+        </ul>
+      </section>
+
+      <section class="stack">
+        <h2>Interruption</h2>
+        <ul class="checklist">
+          <li><label><input type="checkbox" /> Can you cap retries and add backoff/jitter immediately?</label></li>
+          <li><label><input type="checkbox" /> Can you shed load (rate limit, disable noncritical features, degrade gracefully)?</label></li>
+          <li><label><input type="checkbox" /> Can you bound queues / reject work earlier (backpressure)?</label></li>
+          <li><label><input type="checkbox" /> Can you reduce coupling (isolate a dependency, fail open/closed intentionally)?</label></li>
+          <li><label><input type="checkbox" /> Can you restore slack (temporarily add capacity, reduce concurrency, drain safely)?</label></li>
+        </ul>
+      </section>
+
+      <section class="stack">
+        <h2>After-action (learning)</h2>
+        <ul class="checklist">
+          <li><label><input type="checkbox" /> What masked the problem (success rate, smoothing, dashboards)?</label></li>
+          <li><label><input type="checkbox" /> What feedback loop accelerated the cascade?</label></li>
+          <li><label><input type="checkbox" /> What coupling surprised you?</label></li>
+          <li><label><input type="checkbox" /> What workaround debt existed before the incident?</label></li>
+          <li><label><input type="checkbox" /> What single change would have interrupted the loop earlier?</label></li>
+        </ul>
+
+        <div class="footer-cta">
+          <a class="button" href="patterns.html">Back to patterns</a>
+          <a class="button ghost" href="scenarios/index.html">See scenarios</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">Checklist · practical questions · interrupt amplification</p>
+        <p class="muted"><a href="index.html">Concept</a> · <a href="patterns.html">Patterns</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

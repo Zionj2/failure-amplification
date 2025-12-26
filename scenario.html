@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scenario — Failure Amplification</title>
+    <title>Featured Scenario — Failure Amplification</title>
     <meta
       name="description"
-      content="A concrete walkthrough showing how small failures cascade into large outcomes."
+      content="A featured failure cascade scenario illustrating common amplification patterns."
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -21,35 +21,41 @@
           <div>
             <h1 class="brand-title">Failure Amplification</h1>
             <p class="brand-subtitle">
-              A concrete cascade: small issues → compounding pressure → outage.
+              Featured scenario: small slowdown → compounding pressure → outage.
             </p>
           </div>
         </div>
 
         <nav class="nav" aria-label="Primary">
           <a class="nav-link" href="index.html">Concept</a>
-          <a class="nav-link is-active" href="scenario.html">Scenario</a>
-          <a class="nav-link" href="#takeaways">Takeaways</a>
+          <a class="nav-link" href="patterns.html">Patterns</a>
+          <a class="nav-link" href="scenarios/index.html">Scenarios</a>
+          <a class="nav-link" href="checklist.html">Checklist</a>
+          <a class="nav-link" href="about.html">About</a>
         </nav>
       </div>
     </header>
 
     <main id="content" class="container">
       <section class="hero">
-        <p class="kicker">Scenario</p>
+        <p class="kicker">Featured Scenario</p>
         <h2 class="hero-title">The “minor slowdown” that becomes a full outage</h2>
         <p class="hero-lede">
-          This is a deliberately realistic pattern: nothing “explodes” at first.
-          The system degrades, people compensate, the compensations add load, and
-          the loop accelerates.
+          Nothing explodes at first. The system degrades, people compensate, compensations add load,
+          and the loop accelerates.
         </p>
 
         <div class="callout">
-          <h3>Setting</h3>
-          <p>
-            A small web app has a database, an API, and a frontend. Traffic is
-            steady. The team is small. Monitoring exists, but alerts are noisy
-            and often ignored.
+          <h3>Patterns involved</h3>
+          <div class="tag-row">
+            <span class="tag">Retry Storm</span>
+            <span class="tag">Queue Collapse</span>
+            <span class="tag">Hidden Coupling</span>
+            <span class="tag">Alert Fatigue</span>
+            <span class="tag">No Slack</span>
+          </div>
+          <p class="muted" style="margin-top: 10px">
+            These patterns are defined in <a href="patterns.html">Patterns</a>.
           </p>
         </div>
       </section>
@@ -64,43 +70,34 @@
               <h3>Small change increases latency</h3>
             </div>
             <p>
-              A new feature adds a database query that’s slightly inefficient.
-              Requests still succeed, but average response time rises. It’s
-              noticeable, not alarming.
+              A feature adds an inefficient database query. Requests still succeed, but average
+              response time rises. It’s noticeable, not alarming.
             </p>
-            <p class="note">
-              Amplifier: <strong>delay</strong> (damage accumulates quietly).
-            </p>
+            <p class="note">Amplifier: <strong>delay</strong> (damage accumulates quietly).</p>
           </li>
 
           <li class="step">
             <div class="step-head">
               <span class="step-num">2</span>
-              <h3>Time-outs start, but only occasionally</h3>
+              <h3>Time-outs begin during busy moments</h3>
             </div>
             <p>
-              A small fraction of requests now time out during busy moments.
-              Users refresh. The refreshes add traffic. Most requests still
-              succeed, so the problem “feels intermittent.”
+              A small fraction of requests time out. Users refresh. Refreshes add traffic.
+              The problem feels “intermittent,” so it’s easy to downplay.
             </p>
-            <p class="note">
-              Amplifier: <strong>feedback loop</strong> (retries create load).
-            </p>
+            <p class="note">Amplifier: <strong>feedback loop</strong> (retries create load).</p>
           </li>
 
           <li class="step">
             <div class="step-head">
               <span class="step-num">3</span>
-              <h3>Retries and queues hide the severity</h3>
+              <h3>Retries and queues hide severity</h3>
             </div>
             <p>
-              Client-side retry logic and server queues smooth over failures.
-              Metrics show “success,” but the system is now spending more work to
-              achieve the same results.
+              Retry logic and queues smooth over failures. Metrics show “success,” but the system
+              now spends more work to achieve the same results.
             </p>
-            <p class="note">
-              Amplifier: <strong>masking</strong> (success rate hides cost).
-            </p>
+            <p class="note">Amplifier: <strong>masking</strong> (success rate hides cost).</p>
           </li>
 
           <li class="step">
@@ -109,13 +106,10 @@
               <h3>A workaround makes things worse</h3>
             </div>
             <p>
-              Someone disables a slow safeguard (or increases a timeout) to make
-              the app “feel faster.” The app looks better briefly, but requests
-              now sit longer, holding resources, increasing contention.
+              Someone increases timeouts or disables a safeguard so the app feels better briefly.
+              Requests sit longer, holding resources and increasing contention.
             </p>
-            <p class="note">
-              Amplifier: <strong>workarounds</strong> (risk moves and grows).
-            </p>
+            <p class="note">Amplifier: <strong>workarounds</strong> (risk moves and grows).</p>
           </li>
 
           <li class="step">
@@ -124,13 +118,10 @@
               <h3>Coupling spreads the pain</h3>
             </div>
             <p>
-              As the database slows, API instances pile up waiting. CPU and
-              memory rise. Autoscaling adds more instances, which add more
-              connections to the already-struggling database.
+              API instances pile up waiting on the database. Autoscaling adds instances, which
+              add more DB connections, which slows the DB further.
             </p>
-            <p class="note">
-              Amplifier: <strong>coupling</strong> (helpful scaling becomes load).
-            </p>
+            <p class="note">Amplifier: <strong>coupling</strong> (scaling becomes load).</p>
           </li>
 
           <li class="step">
@@ -139,28 +130,22 @@
               <h3>Alert fatigue delays response</h3>
             </div>
             <p>
-              Alerts have fired before for “minor” spikes, so the team hesitates.
-              Meanwhile, the retry loop continues. The system is now operating
-              near its limit with no slack.
+              Alerts have fired before for “minor” spikes. The team hesitates. Meanwhile the loop
+              continues and the system runs near its limit with no slack.
             </p>
-            <p class="note">
-              Amplifier: <strong>human delay</strong> (signal ignored until late).
-            </p>
+            <p class="note">Amplifier: <strong>human delay</strong> (signal ignored until late).</p>
           </li>
 
           <li class="step">
             <div class="step-head">
               <span class="step-num">7</span>
-              <h3>The loop snaps into runaway failure</h3>
+              <h3>Runaway failure</h3>
             </div>
             <p>
-              Latency increases → more retries → more load → more latency.
-              Eventually, queues fill, timeouts surge, and the database starts
-              rejecting connections. The app appears “down.”
+              Latency increases → retries increase → load increases → latency increases. Queues fill,
+              timeouts surge, and the database starts rejecting connections. The app appears down.
             </p>
-            <p class="note">
-              Amplifier: <strong>positive feedback</strong> (self-accelerating).
-            </p>
+            <p class="note">Amplifier: <strong>positive feedback</strong> (self-accelerating).</p>
           </li>
 
           <li class="step">
@@ -169,64 +154,51 @@
               <h3>Recovery is harder than prevention</h3>
             </div>
             <p>
-              Even after fixing the original query, the system has to drain
-              backlogs, clear caches, and unwind retries. The “small” failure
-              required “big” recovery work.
+              Even after fixing the query, the system must drain backlog, unwind retries, and restore
+              stable behavior. The “small” failure demanded “big” recovery work.
             </p>
-            <p class="note">
-              Amplifier: <strong>inertia</strong> (built-up load takes time to unwind).
-            </p>
+            <p class="note">Amplifier: <strong>inertia</strong> (unwinding takes time).</p>
           </li>
         </ol>
       </section>
 
-      <section id="takeaways" class="stack">
+      <section class="stack">
         <h2>Takeaways</h2>
-
         <div class="grid">
           <article class="card">
             <h3>Watch cost, not just success</h3>
             <p>
-              A system can be “mostly successful” while becoming dramatically
-              more expensive per request. Rising work-per-result is an early
-              warning.
+              A system can be “mostly successful” while becoming dramatically more expensive per
+              request. Rising work-per-result is an early warning.
             </p>
           </article>
-
           <article class="card">
             <h3>Retries are a hidden amplifier</h3>
             <p>
-              Retries improve user experience until they become the main source
-              of load. Make retries visible and bounded.
+              Retries improve experience until they become the main source of load. Make retries
+              visible and bounded.
             </p>
           </article>
-
           <article class="card">
             <h3>Slack prevents cascades</h3>
             <p>
-              Systems fail when there’s no margin: time margin, capacity margin,
-              attention margin. Slack is not waste; it’s stability.
+              Time margin, capacity margin, and attention margin matter. Slack isn’t waste; it’s stability.
             </p>
           </article>
         </div>
 
         <div class="footer-cta">
-          <p class="muted">
-            That’s the whole point: the “cause” was small, but the system
-            conditions made it amplify.
-          </p>
-          <a class="button ghost" href="index.html">Back to concept</a>
+          <a class="button" href="checklist.html">Use the checklist</a>
+          <a class="button ghost" href="scenarios/index.html">More scenarios</a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
+        <p class="muted">Featured scenario · maps to patterns · static site</p>
         <p class="muted">
-          Static site · GitHub Pages · One idea, one scenario, finished scope.
-        </p>
-        <p class="muted">
-          <a href="index.html">Concept</a> · <a href="#content">Top</a>
+          <a href="patterns.html">Patterns</a> · <a href="scenarios/index.html">Scenarios</a>
         </p>
       </div>
     </footer>
